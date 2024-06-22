@@ -1,0 +1,87 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <openssl/aes.h>
+unsigned char aes_key[] = "0123456789abcdef";
+unsigned char iv[] = "1234567890abcdef";
+#define AES_BLOCK_SIZE 16
+void print_hex(const char *label, const unsigned char *data, int len) {
+    int i;
+    printf("%s: ", label);
+    for (i = 0; i < len; ++i)
+        printf("%02x ", data[i]);
+    printf("\n");
+}
+void encrypt_ecb(const unsigned char *plaintext, int plaintext_len, unsigned char *ciphertext) {
+    AES_KEY enc_key;
+    AES_set_encrypt_key(aes_key, 128, &enc_key);
+    int blocks = plaintext_len / AES_BLOCK_SIZE;
+    for (int i = 0; i < blocks; ++i) {
+        AES_encrypt(plaintext + i * AES_BLOCK_SIZE, ciphertext + i * AES_BLOCK_SIZE, &enc_key);
+    }
+}
+void decrypt_ecb(const unsigned char *ciphertext, int ciphertext_len, unsigned char *decryptedtext) {
+    AES_KEY dec_key;
+    AES_set_decrypt_key(aes_key, 128, &dec_key);
+    int blocks = ciphertext_len / AES_BLOCK_SIZE;
+    for (int i = 0; i < blocks; ++i) {
+        AES_decrypt(ciphertext + i * AES_BLOCK_SIZE, decryptedtext + i * AES_BLOCK_SIZE, &dec_key);
+    }
+}
+void encrypt_cbc(const unsigned char *plaintext, int plaintext_len, unsigned char *ciphertext) {
+    AES_KEY enc_key;
+    AES_set_encrypt_key(aes_key, 128, &enc_key);
+    AES_cbc_encrypt(plaintext, ciphertext, plaintext_len, &enc_key, iv, AES_ENCRYPT);
+}
+void decrypt_cbc(const unsigned char *ciphertext, int ciphertext_len, unsigned char *decryptedtext) {
+    AES_KEY dec_key;
+    AES_set_decrypt_key(aes_key, 128, &dec_key);
+    AES_cbc_encrypt(ciphertext, decryptedtext, ciphertext_len, &dec_key, iv, AES_DECRYPT);
+}
+void encrypt_cfb(const unsigned char *plaintext, int plaintext_len, unsigned char *ciphertext) {
+    AES_KEY enc_key;
+    AES_set_encrypt_key(aes_key, 128, &enc_key);
+    unsigned char iv_enc[AES_BLOCK_SIZE];
+    memcpy(iv_enc, iv, AES_BLOCK_SIZE);
+    AES_cfb128_encrypt(plaintext, ciphertext, plaintext_len, &enc_key, iv_enc, NULL, AES_ENCRYPT);
+}
+void decrypt_cfb(const unsigned char *ciphertext, int ciphertext_len, unsigned char *decryptedtext) {
+    AES_KEY dec_key;
+    AES_set_decrypt_key(aes_key, 128, &dec_key);
+    unsigned char iv_dec[AES_BLOCK_SIZE];
+    memcpy(iv_dec, iv, AES_BLOCK_SIZE);
+    AES_cfb128_encrypt(ciphertext, decryptedtext, ciphertext_len, &dec_key, iv_dec, NULL, AES_DECRYPT);
+}
+
+int main() {
+    unsigned char plaintext[] = "Hello, world!!!";
+    int plaintext_len = strlen((char *)plaintext);
+    int ciphertext_len_ecb = ((plaintext_len - 1) / AES_BLOCK_SIZE + 1) * AES_BLOCK_SIZE;
+    int ciphertext_len_cbc = plaintext_len + AES_BLOCK_SIZE; // CBC mode needs additional space for padding
+    int ciphertext_len_cfb = plaintext_len; // CFB mode doesn't require extra space
+    unsigned char ciphertext_ecb[ciphertext_len_ecb];
+    unsigned char ciphertext_cbc[ciphertext_len_cbc];
+    unsigned char ciphertext_cfb[ciphertext_len_cfb];
+    unsigned char decryptedtext_ecb[ciphertext_len_ecb];
+    unsigned char decryptedtext_cbc[ciphertext_len_cbc];
+    unsigned char decryptedtext_cfb[ciphertext_len_cfb];
+    encrypt_ecb(plaintext, plaintext_len, ciphertext_ecb);
+    print_hex("ECB Ciphertext", ciphertext_ecb, ciphertext_len_ecb);
+
+    decrypt_ecb(ciphertext_ecb, ciphertext_len_ecb, decryptedtext_ecb);
+    printf("ECB Decrypted text: %s\n", decryptedtext_ecb);
+
+    encrypt_cbc(plaintext, plaintext_len, ciphertext_cbc);
+    print_hex("CBC Ciphertext", ciphertext_cbc, ciphertext_len_cbc);
+
+    decrypt_cbc(ciphertext_cbc, ciphertext_len_cbc, decryptedtext_cbc);
+    printf("CBC Decrypted text: %s\n", decryptedtext_cbc);
+
+    encrypt_cfb(plaintext, plaintext_len, ciphertext_cfb);
+    print_hex("CFB Ciphertext", ciphertext_cfb, ciphertext_len_cfb);
+
+    decrypt_cfb(ciphertext_cfb, ciphertext_len_cfb, decryptedtext_cfb);
+    printf("CFB Decrypted text: %s\n", decryptedtext_cfb);
+
+    return 0;
+}
