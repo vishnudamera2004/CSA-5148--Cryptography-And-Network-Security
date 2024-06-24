@@ -36,3 +36,9 @@ printf("%c",plain[i]);
 }
 getch();
 }
+
+OUTPUT:
+Enter a message to encrypt: kavya
+Enter the key: 2
+Encrypted message: mcxac
+
