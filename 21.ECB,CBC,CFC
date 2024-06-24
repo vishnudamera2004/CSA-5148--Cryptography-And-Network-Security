@@ -85,3 +85,17 @@ int main() {
 
     return 0;
 }
+
+Output :
+Enter plaintext (max 255 characters): rddfghjcxsdfgh
+Enter key (8 characters): jj
+Enter initialization vector (8 characters): hhhf
+Original plaintext: rddfghjcxsdfghÇ
+ECB ciphertext: 18 0e 64 66 67 68 6a 63 12 19 64 66 67 68 80 00
+CBC ciphertext: 70 66 0c 00 67 68 6a 63 62 7f 68 66 00 00 ea 63
+CFB ciphertext: 70 66 0c 00 67 68 6a 63 62 7f 68 66 00 00 ea 63
+Decrypted ECB plaintext: rddfghjcxsdfghÇ
+Decrypted CBC plaintext: rddfghjczq
+
+Decrypted CFB plaintext: rddfghjczq
+
