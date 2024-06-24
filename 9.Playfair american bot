@@ -53,3 +53,10 @@ int main() {
 
     return 0;
 }
+
+
+OUTPUT:
+Enter the ciphertext to decrypt:
+BOTEI ZONTX BYBNT GONEY CUZWR
+Decrypted message:
+BOTEI9AONTX9BYBNT9GONEY9CUAWR2
