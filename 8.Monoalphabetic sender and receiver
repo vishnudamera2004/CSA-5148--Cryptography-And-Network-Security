@@ -38,3 +38,8 @@ int main() {
     printf("Encrypted string: %s\n", plaintext);
     return 0;
 }
+
+OUTPUT:
+Enter the plaintext: a b c d e f g h i j k l m n o p q r s t u v w x y z
+Encrypted string: C I P H E R A B D F G J K L M N O Q S T U V W X Y Z
+
