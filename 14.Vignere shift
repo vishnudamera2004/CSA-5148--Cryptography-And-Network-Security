@@ -58,3 +58,8 @@ int main() {
     
     return 0;
 }
+
+OUTPUT:
+Plaintext:  Hello, World!
+Key:        24 10 19 2 11 17 16 7 13 1 4 13 5
+Ciphertext: Foenz, Dbspq!
