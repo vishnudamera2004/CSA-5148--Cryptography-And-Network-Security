@@ -118,5 +118,8 @@ else
 playfair(str[i],str[i+1],key);i++;
 }}
 
-
+OUTPUT:
+Enter the keyword: have a good day
+Enter the plaintext: saveetha
+Ciphertext: pgeghxav
 
