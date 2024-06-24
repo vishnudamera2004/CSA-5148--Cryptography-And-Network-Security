@@ -46,3 +46,13 @@ int main() {
     hillCipherEncrypt(keyMatrix, input, len);
     return 0;
 }
+
+
+output:
+Plaintext: meet me at the usual place at ten rather than eight oclock
+Key Matrix:
+  9 4
+  5 7
+Encrypted Message: UKIX2>/>YD4;BL8(IWSZ>9VDIM68N;FT27XHROAJ4;LJ27QYEBN;EGZXGC
+Decrypted Message: QWVV1,<<JZ(-OB=<GWXJ<?UPMG9.(GYP03MJJIFR(-IT03YMJV(GGQCRIS
+
