@@ -78,3 +78,22 @@ int main() {
     
     return 0;
 }
+
+
+OUTPUT:
+Performing letter frequency attack on the additive cipher:
+Ciphertext: Zpv xibu, bu uif hbnf jt b hppe hbnf jt ibse up kfu.
+
+Top possible plaintexts (in order of likelihood):
+Key = 23
+1. CYE GRKD, KD DRO QKWO SC K QYYN QKWO SC RKBN DY TOD.
+2. BXD FQJC, JC CQN PJVN RB J PXXM PJVN RB QJAM CX SNC.
+3. AWC EPIB, IB BPM OIUM QA I OWWL OIUM QA PIZL BW RMB.
+4. ZVB DOHA, HA AOL NHTL PZ H NVVK NHTL PZ OHYK AV QLA.
+5. YUA CNGZ, GZ ZNK MGSK OY G MUUJ MGSK OY NGXJ ZU PKZ.
+6. XTZ BMFY, FY YMJ LFRJ NX F LTTI LFRJ NX MFWI YT OJY.
+7. WSY ALEX, EX XLI KEQI MW E KSSH KEQI MW LEVH XS NIX.
+8. VRX ZKDW, DW WKH JDPH LV D JRRG JDPH LV KDUG WR MHW.
+9. UQW YJCV, CV VJG ICOG KU C IQQF ICOG KU JCTF VQ LGV.
+10. TPV XIBU, BU UIF HBNF JT B HPPE HBNF JT IBSE UP KFU.
+
