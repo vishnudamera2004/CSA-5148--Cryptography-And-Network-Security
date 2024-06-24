@@ -420,3 +420,10 @@ int main() {
 
     return 0;
 }
+
+Output :
+Enter 64-bit plaintext (in hexadecimal): 345678
+Enter 64-bit key (in hexadecimal): 98765
+Plaintext: 0x0000000000345678
+Ciphertext: 0x0034567800000000
+
