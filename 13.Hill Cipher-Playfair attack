@@ -71,3 +71,8 @@ int main() {
     
     return 0;
 }
+
+OUTPUT:
+Encrypted ciphertext: dldcq
+Decrypted plaintext: hellw
+
