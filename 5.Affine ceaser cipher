@@ -68,3 +68,13 @@ int main() {
 
     return 0;
 }
+
+OUTPUT:
+Enter the plaintext: good day
+Enter the value of 'a' (must be coprime to 26): 7
+Enter the value of 'b': 5
+Encrypted Text: vzza afr
+1Xα 
+Decrypting...
+Decrypted Text: good day
+
