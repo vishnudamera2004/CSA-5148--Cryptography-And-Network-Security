@@ -27,6 +27,9 @@ void decryptAffine(char *ciphertext, int a, int b) {
     printf("\n");
 }
 
+OUTPUT:
+Decrypted Message:
+53ççå305))6*;4826)4ç.)4ç);806*;48å8╢60))85;;]8*;:ç*8å83(88)5*å;46(;88*96*?;8)*ç(;485);5*å2:*ç(;4956*2(5*ù4)8╢8*;4069285);)6å8)4çç;1(ç9;48081;8:8ç1;48å85;4)485å528806*81(ç9;48;(88;4(ç?34;48)4ç;161;:188;ç?
 int main() {
     char ciphertext[] = "YOUR CIPHERTEXT HERE";
     int a, b;
