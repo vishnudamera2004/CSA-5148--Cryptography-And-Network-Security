@@ -129,3 +129,15 @@ int main() {
 
     return 0;
 }
+
+
+OUTPUT:
+Playfair Matrix:
+M F H I K
+U N O P Q
+Z V W X Y
+E L A R D
+S T B C G
+
+Original Message: Must see you over Cadogan West. Coming at once.
+Encrypted Message: UZTBMSZRWQNPZLCIREQBLOZATBBPFKQTLBPOSR
